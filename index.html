@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>slider</title>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+        }
+        #img{
+            width: 100%;
+            height: 400px;
+            margin: 20px 0%;
+            position: absolute;
+        }
+        .left-btn{
+            width: 10%;
+            height: 400px;
+            position: absolute;
+            left: 0%;
+            top: 20px;
+        }
+        .right-btn{
+            width: 10%;
+            height: 400px;
+            position: absolute;
+            left: 90%;
+            top: 20px;
+        }
+        .left-arrow ,.right-arrow{
+            width: 100px;
+            height: 200px;
+            margin: 100px 15px;
+            
+        }
+    </style>
+    
+    <script>
+        var imgCount = 1;
+        var total = 7 ;
+        function slider(x){
+            var image = document.getElementById("img");
+            imgCount = imgCount + x;
+            if(imgCount < 1){
+                imgCount = total;
+            }
+            else if(imgCount > total){
+                imgCount = 1;
+            }
+            else{
+                 image.src = "./image/img" + imgCount + ".jpg";
+            }   
+        }
+        
+        window.setInterval(function slideA() {
+            var image = document.getElementById("img");
+            imgCount = imgCount + 1;
+            if(imgCount < 1){
+                imgCount = total;
+            }
+            else if(imgCount > total){
+                imgCount = 1;
+            }
+            else{
+                 image.src = "./image/img" + imgCount + ".jpg";
+            }
+              
+        },3000);
+    </script>
+</head>
+<body onload="slideA()">
+    <div>
+       <img src="image/img1.jpg" alt="" id="img">
+       <div class="left-btn" ><img src="image/left.png"  onclick="slider(-1);" alt="" class="left-arrow"></div>
+       <div class="right-btn" ><img src="image/right.png" onclick="slider(1);" alt="" class="right-arrow"></div>    
+    </div>
+    
+</body>
+</html>
